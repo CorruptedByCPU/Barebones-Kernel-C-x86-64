@@ -1,6 +1,8 @@
 # Barebones-Kernel-x86-64
 
-#### This repository is for anyone who needs a working base for start. How you continue depends only on you.
+## This repository is for anyone who needs a working base for start. How you continue depends only on you.
+
+### The core of the Fern-Night kernel is based on this repository.
 
 What will you need to build and run:
 
