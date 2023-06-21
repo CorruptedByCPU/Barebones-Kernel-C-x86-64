@@ -14,13 +14,14 @@ CFLAGS="-O3 -march=x86-64 -m64 -nostdlib -fomit-frame-pointer -fno-builtin -fno-
 LDFLAGS="-nostdlib -static -no-dynamic-linker"
 
 git submodule update --init
+(cd limine && make > /dev/null 2>&1)
 
 ${C} -c kernel.c -o build/kernel.o ${CFLAGS} || exit 1;
 
 ${LD} build/kernel.o -o build/kernel -T linker.kernel ${LDFLAGS}
 
-cp build/kernel limine.cfg limine/limine.sys limine/limine-cd.bin limine/limine-cd-efi.bin iso
+cp build/kernel limine.cfg limine/limine-bios.sys limine/limine-bios-cd.bin limine/limine-uefi-cd.bin iso
 
-xorriso -as mkisofs -b limine-cd.bin -no-emul-boot -boot-load-size 4 -boot-info-table --efi-boot limine-cd-efi.bin -efi-boot-part --efi-boot-image --protective-msdos-label iso -o build/barebones.iso > /dev/null 2>&1
+xorriso -as mkisofs -b limine-bios-cd.bin -no-emul-boot -boot-load-size 4 -boot-info-table --efi-boot limine-uefi-cd.bin -efi-boot-part --efi-boot-image --protective-msdos-label iso -o build/barebones.iso > /dev/null 2>&1
 
-limine/limine-deploy build/barebones.iso > /dev/null 2>&1
+limine/limine bios-install build/barebones.iso > /dev/null 2>&1
