@@ -27,11 +27,14 @@ void kernel( void ) {
 	// set pointer to first pixel of video memory area
 	uint32_t *pixel = (uint32_t *) limine_framebuffer_request.response -> framebuffers[ 0 ] -> address;
 
-	// number of pixels
-	uint64_t count = limine_framebuffer_request.response -> framebuffers[ 0 ] -> width * limine_framebuffer_request.response -> framebuffers[ 0 ] -> height;
+	// change all pixels color to RED
+	for( uint64_t y = 0; y < limine_framebuffer_request.response -> framebuffers[ 0 ] -> height; y++ ) {
+		for( uint64_t x = 0; x < limine_framebuffer_request.response -> framebuffers[ 0 ] -> width; x++ )
+			pixel[ x ] = 0x00FF0000;
 
-	// change all pixels color to RED (bright)
-	while( count-- ) *(pixel++) = 0x00FF0000;
+		// next line of pixels on framebuffer
+		pixel = (uint32_t *) ((uint64_t) pixel + limine_framebuffer_request.response -> framebuffers[ 0 ] -> pitch);
+	}
 
 	// infinite loop
 	for(;;);
