@@ -28,3 +28,5 @@ Compile:
 Run:
 
         $ ./qemu.sh
+
+Proper execution will show you a Red screen inside Qemu environment :)
