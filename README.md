@@ -2,7 +2,7 @@
 
 ## This repository is for anyone who needs a working base for start. How you continue is up to you.
 
-### The core of the Fern-Night kernel is based on this repository.
+### The core of the Foton/Fern-Night kernel is based on this repository.
 
 What will you need to build and run:
 
@@ -12,8 +12,8 @@ What will you need to build and run:
         - clang
         because we don't need a cross-compiler,
         
-        - ld or ld.lld
-        i'm using LD from Binutils,
+        - ld.lld
+        linker from LLVM,
 
         - xorisso
         to create working iso file,
@@ -23,10 +23,10 @@ What will you need to build and run:
 
 Compile:
 
-        $ ./make.sh
+        $ ./make
 
 Run:
 
-        $ ./qemu.sh
+        $ ./qemu
 
-Proper execution will show you a Red screen inside Qemu environment :)
+Proper execution will show you a green sign mark on center of screen :)
