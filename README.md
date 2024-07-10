@@ -30,3 +30,7 @@ Run:
         $ ./qemu
 
 Proper execution will show you a green sign mark on center of screen :)
+
+<p align="center">
+  <img src="https://blackdev.org/shot/barebones.png" />
+</p>
